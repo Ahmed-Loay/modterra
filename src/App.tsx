@@ -13,17 +13,17 @@ export default function App() {
         {
           icon: <Trees stroke="whitesmoke" size={"20px"} />,
           title: "Biomes",
-          page: <div></div>,
+          menu: <div>biomes</div>,
         },
         {
           icon: <SquareFunction stroke="whitesmoke" size={"20px"} />,
           title: "Controllers",
-          page: <div></div>,
+          menu: <div>controllers</div>,
         },
         {
           icon: <AudioLines stroke="whitesmoke" size={"20px"} />,
           title: "Noise Functions",
-          page: <div></div>,
+          menu: <div>n o i s e</div>,
         },
       ]}
     />

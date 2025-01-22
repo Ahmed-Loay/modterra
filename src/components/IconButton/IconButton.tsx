@@ -13,7 +13,7 @@ type IconButtonProps = {
 export default function IconButton({
   icon,
   tooltip,
-  forceHover,
+  forceHover = false,
   onClick,
 }: IconButtonProps) {
   const [hover, setHover] = useState(false);
@@ -23,7 +23,8 @@ export default function IconButton({
       <div
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        className="iconbutton"
+        onClick={onClick}
+        className={forceHover ? "iconbutton active" : "iconbutton"}
       >
         {icon}
       </div>
