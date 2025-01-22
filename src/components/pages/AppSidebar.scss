@@ -1,0 +1,47 @@
+.sidebar {
+    display: flex;
+
+    width: 100vw;
+    height: 100vh;
+
+    .sideicons,
+    .sidemenu {
+        background-color: #18181b;
+
+        border-width: 1px;
+        border-style: solid;
+        border-color: #111113;
+
+        height: 100%;
+    }
+
+    .sideicons {
+        .appicon {
+            background-color: #1d4ed8;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 10px;
+
+            padding: 7px;
+            margin-bottom: 15px;
+        }
+
+        .iconbutton {
+            margin: 4px 0px;
+        }
+
+        padding: 8px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .sidemenu {
+        height: 100%;
+    }
+}

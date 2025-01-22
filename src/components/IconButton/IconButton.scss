@@ -1,0 +1,42 @@
+.iconbutton {
+    position: relative;
+
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+
+    .tooltip {
+        background-color: rgb(238, 238, 238);
+
+        position: absolute;
+        left: 45px;
+
+        padding: 6px;
+        border-radius: 5px;
+
+        display: none;
+
+        &.active {
+            display: block
+        }
+
+        p {
+            font-size: 12px;
+            font-family: monospace;
+            color: black;
+
+            text-wrap: nowrap;
+
+            margin: 0px;
+        }
+    }
+}
+
+.iconbutton:hover {
+    cursor: pointer;
+    background-color: #ffffff0f;
+}
