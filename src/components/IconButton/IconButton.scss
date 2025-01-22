@@ -1,42 +1,68 @@
-.iconbutton {
-    position: relative;
+.iconbuttoncontainer {
+    $BUTTON_PADDING: 10px;
 
-    padding: 10px;
+    $TOOLTIP_PADDING: 6px;
+    $TOOLTIP_FONT_SIZE: 12px;
+
+    $BUTTON_TOOLTIP_SPACING: 5px;
 
     display: flex;
-    justify-content: center;
     align-items: center;
 
-    border-radius: 10px;
+    .iconbutton {
+        padding: $BUTTON_PADDING;
 
-    .tooltip {
-        background-color: rgb(238, 238, 238);
+        position: relative;
 
-        position: absolute;
-        left: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        padding: 6px;
-        border-radius: 5px;
+        border-radius: 10px;
+    }
 
-        display: none;
+    .iconbutton:hover,
+    .iconbutton.active {
+        cursor: pointer;
+        background-color: #ffffff0f;
+    }
 
-        &.active {
-            display: block
-        }
+    .tooltipcontainer {
+        position: relative;
+        display: flex;
+        align-items: center;
 
-        p {
-            font-size: 12px;
-            font-family: monospace;
-            color: black;
+        .tooltip {
+            background-color: rgb(238, 238, 238);
 
-            text-wrap: nowrap;
+            position: absolute;
+            left: $BUTTON_TOOLTIP_SPACING;
 
-            margin: 0px;
+            padding: $TOOLTIP_PADDING;
+            border-radius: 5px;
+
+            transition:
+                translate 0.1s,
+                opacity 0.2s;
+
+
+            opacity: 0;
+            translate: -3px;
+
+            &.active {
+                opacity: 1;
+                translate: 0px;
+            }
+
+            p {
+                font-size: $TOOLTIP_FONT_SIZE;
+                font-family: monospace;
+                color: black;
+
+                text-wrap: nowrap;
+
+                margin: 0px;
+            }
         }
     }
-}
-
-.iconbutton:hover {
-    cursor: pointer;
-    background-color: #ffffff0f;
 }
