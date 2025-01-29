@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useState } from "react";
+import { ReactElement, useState } from "react";
 
 import "./AppSidebar.scss";
 import IconButton from "../IconButton/IconButton";
@@ -13,14 +13,12 @@ type AppSidebarProps = {
   sidebarMenu: number;
   appIcon: ReactElement;
   entries?: MenuEntry[];
-  children?: ReactNode;
 };
 
 export default function AppSidebar({
   sidebarMenu,
   appIcon,
   entries,
-  children,
 }: AppSidebarProps) {
   const [selectedEntry, setSelectedEntry] = useState<number | null>(null);
 
@@ -53,8 +51,6 @@ export default function AppSidebar({
       >
         {entries?.find((_, i) => i == selectedEntry)?.menu}
       </div>
-
-      <div className="page">{children}</div>
     </div>
   );
 }

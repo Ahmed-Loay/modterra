@@ -37,6 +37,7 @@
 
             position: absolute;
             left: $BUTTON_TOOLTIP_SPACING;
+            z-index: 1;
 
             padding: $TOOLTIP_PADDING;
             border-radius: 5px;
