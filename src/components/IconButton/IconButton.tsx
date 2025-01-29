@@ -1,4 +1,4 @@
-import { ReactElement, useRef, useState } from "react";
+import { ReactElement, useState } from "react";
 
 import "./IconButton.scss";
 import "./tooltip.scss";

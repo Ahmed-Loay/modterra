@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, ReactNode, useState } from "react";
 
 import "./AppSidebar.scss";
 import IconButton from "../IconButton/IconButton";
@@ -13,22 +13,24 @@ type AppSidebarProps = {
   sidebarMenu: number;
   appIcon: ReactElement;
   entries?: MenuEntry[];
+  children?: ReactNode;
 };
 
 export default function AppSidebar({
   sidebarMenu,
   appIcon,
   entries,
+  children,
 }: AppSidebarProps) {
-  const [selectedMenu, setSelectedMenu] = useState<number | null>(null);
+  const [selectedEntry, setSelectedEntry] = useState<number | null>(null);
 
   function handleMenuEntryClick(index: number) {
     //deselect on clicking on active again
-    if (index == selectedMenu) {
-      setSelectedMenu(null);
+    if (index == selectedEntry) {
+      setSelectedEntry(null);
       return;
     }
-    setSelectedMenu(index);
+    setSelectedEntry(index);
   }
 
   return (
@@ -38,18 +40,21 @@ export default function AppSidebar({
         {entries?.map((entry, i) => (
           <IconButton
             onClick={() => handleMenuEntryClick(i)}
-            forceHover={selectedMenu == i}
+            forceHover={i == selectedEntry}
             tooltip={entry.title}
             icon={entry.icon}
           ></IconButton>
         ))}
       </div>
 
-      <div className="sidemenu" style={{ width: sidebarMenu }}>
-        {entries?.find((_, i) => selectedMenu == i)?.menu}
+      <div
+        className="sidemenu"
+        style={{ width: selectedEntry !== null ? sidebarMenu : 0 }}
+      >
+        {entries?.find((_, i) => i == selectedEntry)?.menu}
       </div>
 
-      <div className="page"></div>
+      <div className="page">{children}</div>
     </div>
   );
 }
