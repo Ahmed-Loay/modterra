@@ -1,33 +1,58 @@
-import React, { useRef } from "react";
-
-import DockLayout, { LayoutData } from "rc-dock";
-import "rc-dock/dist/rc-dock-dark.css";
-
-const defaultLayout: LayoutData = {
-  dockbox: {
-    mode: "horizontal",
-    children: [
-      {
-        tabs: [{ id: "tab1", title: "tab1", content: <div>Hello World</div> }],
-      },
-      {
-        tabs: [{ id: "tab2", title: "tab2", content: <div>2</div> }],
-      },
-    ],
-  },
-};
+import { IJsonModel, Layout, Model } from "flexlayout-react";
+import "flexlayout-react/style/dark.scss";
+import TerrainViewport from "./viewport-wrappers/TerrainViewport.tsx/TerrainViewport";
 
 type PanelsContainerProps = {
   style?: React.CSSProperties;
 };
 
 export default function PanelsContainer({ style }: PanelsContainerProps) {
+  const json: IJsonModel = {
+    global: { tabSetEnableSingleTabStretch: true },
+    borders: [],
+    layout: {
+      type: "row",
+      weight: 100,
+      children: [
+        {
+          type: "tabset",
+          weight: 50,
+          children: [
+            {
+              type: "tab",
+              name: "One",
+              component: "chunkviewport",
+            },
+          ],
+        },
+        {
+          type: "tabset",
+          weight: 50,
+          children: [
+            {
+              type: "tab",
+              name: "Two",
+              component: "button",
+            },
+          ],
+        },
+      ],
+    },
+  };
+
   return (
     <div style={style}>
-      <DockLayout
-        defaultLayout={defaultLayout}
-        style={{
-          height: "100%",
+      <Layout
+        model={Model.fromJson(json)}
+        realtimeResize={true}
+        factory={(node) => {
+          var component = node.getComponent();
+
+          if (component === "button") {
+            return <button>{node.getName()}</button>;
+          } else if (component === "chunkviewport") {
+            return <TerrainViewport />;
+          }
         }}
       />
     </div>

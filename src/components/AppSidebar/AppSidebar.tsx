@@ -37,6 +37,7 @@ export default function AppSidebar({
         <div className="appicon">{appIcon}</div>
         {entries?.map((entry, i) => (
           <IconButton
+            key={entry.title}
             onClick={() => handleMenuEntryClick(i)}
             forceHover={i == selectedEntry}
             tooltip={entry.title}

@@ -30,7 +30,14 @@ export default function App() {
         ]}
       />
 
-      <PanelsContainer style={{ width: "100%", fontFamily: "monospace" }} />
+      <PanelsContainer
+        style={{
+          position: "relative",
+          width: "100%",
+          fontFamily: "monospace",
+          overflow: "hidden",
+        }}
+      />
     </div>
   );
 }
